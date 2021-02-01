@@ -67,7 +67,7 @@ if __name__ == "__main__":
 		else:
 			opac_threshold = float(opac)
 
-	byte_arr = convert_img_to_byte_str(bin_img)
+	byte_arr = convert_img_to_byte_arr(bin_img)
 	out_file = open(out_path, 'wb')
 	out_file.write(byte_arr)
 	out_file.close()
