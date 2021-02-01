@@ -65,7 +65,7 @@ if __name__ == "__main__":
 		if opac == "":
 			break
 		else:
-			opac_threshold = float(opac)
+			opac_threshold = float(opac) / 100
 
 	byte_arr = convert_img_to_byte_arr(bin_img)
 	out_file = open(out_path, 'wb')
