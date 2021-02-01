@@ -25,18 +25,19 @@ def remove_translucent_pixels(img, threshold=.5, print_count=True):
 	clean_img.putdata(clean_data)
 	return clean_img
 
-def convert_img_to_byte_str(bin_img):
+def convert_img_to_byte_arr(bin_img):
 	img_data = bin_img.getdata()
-	byte_str = ""
+	byte_arr = []
 	for i in range(0, len(img_data), 8):
 		byte = 0
 		for j in range(8):
 			if img_data[i + j][3] > 0:
 				byte += 1
 			byte << 1
-		byte_str += str(byte)
+		byte_arr.append(byte)
 
-	return byte_str
+	byte_arr = bytes(byte_arr)
+	return byte_arr
 				
 
 if __name__ == "__main__":
@@ -66,9 +67,9 @@ if __name__ == "__main__":
 		else:
 			opac_threshold = float(opac)
 
-	byte_str = convert_img_to_byte_str(bin_img)
-	out_file = open(out_path, 'w')
-	out_file.write(byte_str)
+	byte_arr = convert_img_to_byte_str(bin_img)
+	out_file = open(out_path, 'wb')
+	out_file.write(byte_arr)
 	out_file.close()
 	print("Successfully exported to {}".format(out_path))
 	print("==============================")
