@@ -33,7 +33,7 @@ def convert_img_to_byte_arr(bin_img):
 		for j in range(8):
 			if img_data[i + j][3] > 0:
 				byte += 1
-			byte << 1
+			byte = byte << 1
 		byte_arr.append(byte)
 
 	byte_arr = bytes(byte_arr)
